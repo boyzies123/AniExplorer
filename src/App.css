@@ -19,7 +19,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: top;
+  padding-top: 70px;
   font-size: calc(10px + 2vmin);
   color: white;
 }
@@ -28,6 +29,83 @@
   color: #61dafb;
 }
 
+.topnav{
+  background-color: black;
+  font-size: 30px;
+  height: 50px;
+}
+.topnav a{
+  color: white;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+}
+.topnav a:active{
+  background-color: #04AA6D;
+  color: white;
+}
+
+.topnav a:hover{
+  background-color: #04AA6D;
+  color: white;
+  height:40px;
+}
+
+.search-bar{
+  position: absolute;      /* Position relative to the nearest positioned ancestor */
+  top: 10px;               /* 10px from the top of the parent container */
+  right: 10px;             /* 10px from the right side of the parent container */
+  
+}
+.bar{
+  background-color: lightgray;
+  border-radius: 5px; /* Curve */
+  width: 300px;       /* Width of the search bar */
+  height: 10px; 
+  padding: 5px;
+}
+
+.topnav .right{
+  position: absolute;  /* Position relative to the nearest positioned ancestor (topnav) */
+  top: 0px;           /* 10px from the top of the parent container */
+  right: 350px;         /* 10px from the right side of the parent container */
+
+}
+.login-bg{
+  background-color: #282c34;
+  height: 100vh;
+  display: flex;
+  justify-content: center; /* Horizontally center the container */
+  align-items: center; /* Vertically center the container */
+}
+.login-container{
+  background-color: #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 70px;
+  padding-bottom: 70px;
+  font-size: 15px;
+  color: darkgray;
+  border-radius: 5px;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.2); 
+  backdrop-filter: blur(10px); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+#login-button{
+  display: block; /* Ensures it's treated as a full-width block */
+  margin: 20px auto; /* Centers it horizontally */
+  padding: 10px 20px; /* Adjust padding for a better look */
+  text-align: center; /* Centers the text inside the button */
+  background-color: #4CAF50; /* Example color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

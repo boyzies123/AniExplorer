@@ -1,14 +1,21 @@
 import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
-
+import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Searchbar from './components/Searchbar';
+import Login from "./pages/Login";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>AniExplorer</h1>
-        <h3>Keep track of your shows the easy way</h3>
-      </header>
-    </div>
+    <Router>
+      <Navbar />
+      <Searchbar />
+      <Routes>
+        <Route path="/home" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Router>
+    
   );
 }
 
