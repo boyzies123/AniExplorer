@@ -1,24 +1,25 @@
+import {Link} from "react-router-dom";
 const Login = () =>{
     return (
-        <div class="login-bg">
-            <div class="login-container">
+        <div className="bg">
+            <div className="login-container">
                 <h1>Login</h1>
                 <form>
-                    <label for="username">Username</label>
+                    <label for="username"></label>
                     <br></br>
-                    <input class="bar" type="text" id="username" name="username"/>
+                    <input type="text" id="username" name="username" placeholder="Username"/>
                     <br></br>
-                    <label for="password">Password</label>
+                    <label for="password"></label>
                     <br></br>
-                    <input class="bar" type="password" id="password" name="password"/>
+                    <input type="password" id="password" name="password" placeholder="Password"/>
                     <br></br>
                     <br></br>
-                    <button id="login-button">Login</button>
+                    <button className="button">Login</button>
                     {/*Temp link*/}
                     <br></br>
                     <a href="#Forgot Password">Forgot Password?</a>
                     <br></br>
-                    Not a user? <a href="#Create Account">Create an account</a>
+                    Not a user? <Link to={"/CreateAccount"}>Create an account</Link>
                 </form>
             </div>
         </div>

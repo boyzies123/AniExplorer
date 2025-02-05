@@ -1,8 +1,8 @@
 import {Link } from "react-router-dom";
 const Navbar = () => {
     return (
-        <div class="topnav">
-            <div class="left">
+        <div className="topnav">
+            <div className="left">
                 <Link to={'/Home'} >Home</Link>
                 <a href="#Top Anime">Top Anime</a>
                 <a href="#Top Manga">Top Manga</a>
@@ -10,9 +10,9 @@ const Navbar = () => {
                 
             </div>
 
-            <div class="right">
+            <div className="right">
                 <Link to={'/Login'} >Login</Link>
-                <a href="#Signup">Sign Up</a>
+                <Link to={"/CreateAccount"}>Sign Up</Link>
             </div>
         </div>
     );
