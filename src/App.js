@@ -7,6 +7,7 @@ import Searchbar from './components/Searchbar';
 import Login from "./pages/Login";
 import CreateAccount from "./pages/CreateAccount";
 import AnimeSearch from './pages/AnimeSearch';
+import AnimePage from './pages/AnimePage';
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/createaccount" element={<CreateAccount />} />
         <Route path="/AnimeSearch" element={<AnimeSearch />} />
+        <Route path="/AnimePage" element={<AnimePage />} />
       </Routes>
     </Router>
     

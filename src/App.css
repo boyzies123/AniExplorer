@@ -78,6 +78,7 @@
   display: flex;
   justify-content: center; /* Horizontally center the container */
   align-items: center; /* Vertically center the container */
+  flex-wrap: wrap;
 }
 .login-container{
   background-color: #f0f0f0;
@@ -109,9 +110,52 @@
   cursor: pointer;
   
 }
-.search{
-  display: flex;
+
+
+.image-container {
+  background-color: #282c34;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+  gap: 20px;
+  padding: 20px;
 }
+
+.image-card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  overflow: visible;
+}
+
+
+
+.image-card p {
+  margin-top: 5px;
+  font-size: 16px;
+  color: white; 
+}
+.image-card .popup{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px;
+  width: 200px; /* Width of the details box */
+  background-color: rgba(0, 0, 0, 0.8); 
+  color: white;
+  opacity: 0; /* Hidden by default */
+  transition: opacity 0.3s ease; /* Smooth fade-in */
+  position: absolute; 
+  top: 50%; /* Center vertically inside the .image-card */
+  left: 100%; /* Position to the right of the image */
+  transform: translateY(-50%); /* Center it vertically */
+  z-index: 999;
+}
+.image-card:hover .popup{
+  opacity: 1;
+}
+
+
 
 @keyframes App-logo-spin {
   from {
