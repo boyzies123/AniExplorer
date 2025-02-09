@@ -125,9 +125,13 @@
   align-items: center;
   flex-direction: column;
   position: relative;
-  overflow: visible;
-}
+  overflow: visible; 
+  width: 150px; 
+  min-height: 250px; 
 
+
+
+}
 
 
 .image-card p {
@@ -135,25 +139,24 @@
   font-size: 16px;
   color: white; 
 }
-.image-card .popup{
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-  width: 200px; /* Width of the details box */
-  background-color: rgba(0, 0, 0, 0.8); 
+.popup{
+  position: absolute;
+  bottom: 0; 
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark background for popup */
   color: white;
-  opacity: 0; /* Hidden by default */
-  transition: opacity 0.3s ease; /* Smooth fade-in */
-  position: absolute; 
-  top: 50%; /* Center vertically inside the .image-card */
-  left: 100%; /* Position to the right of the image */
-  transform: translateY(-50%); /* Center it vertically */
-  z-index: 999;
+  margin: 0 auto; /* Center the popup*/
+  opacity: 0; /* Start as invisible */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity change */
+  font-size: 12px;
+  text-align: center;
 }
 .image-card:hover .popup{
   opacity: 1;
+  
 }
+
 
 
 
