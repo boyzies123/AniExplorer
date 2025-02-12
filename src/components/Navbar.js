@@ -4,7 +4,7 @@ const Navbar = () => {
         <div className="topnav">
             <div className="left">
                 <Link to={'/Home'} >Home</Link>
-                <a href="#Top Anime">Top Anime</a>
+                <Link to={'/TopAnime'}>Top Anime</Link>
                 <a href="#Top Manga">Top Manga</a>
                 <a href="#Top Characters">Top Characters</a>
                 

@@ -128,7 +128,7 @@
   overflow: visible; 
   width: 150px; 
   min-height: 250px; 
-
+  
 
 
 }
@@ -138,26 +138,70 @@
   margin-top: 5px;
   font-size: 16px;
   color: white; 
+  text-align: center;
 }
 .popup{
   position: absolute;
-  bottom: 0; 
+  bottom: 89px; 
   left: 0;
   right: 0;
   background-color: rgba(0, 0, 0, 0.7); /* Dark background for popup */
   color: white;
   margin: 0 auto; /* Center the popup*/
-  opacity: 0; /* Start as invisible */
+
   transition: opacity 0.3s ease; /* Smooth transition for opacity change */
   font-size: 12px;
   text-align: center;
+  visibility: hidden;
 }
-.image-card:hover .popup{
-  opacity: 1;
+.image-card a:hover ~ .popup { /* Find a popup that comes after a hovered link*/
+
+  visibility: visible;
+}
+
+.popup:hover{
+  visibility: visible;
+}
+
+
+#top-header{
+  position: relative;
+  color:white;
+  bottom:90px;
+}
+.Top-container{
+  background-color: #282c34;
+  display: grid;
+
+  padding: 80px;
+}
+.Top-container a{
+  color:black;
+  text-decoration: none;
+  font-size:14px;
+}
+.List{
+  height:110px;
+  width: 10000px;
+  background-color:white;
+  padding:10px;
+  margin:50px;
+  position:relative;
+  border-radius: 5px;
   
 }
-
-
+.Ranking{
+  position:absolute;
+  left: -40px;
+  font-size: 20px;
+  color:white;
+}
+.stats{
+  position:relative;
+  left: 500px;
+  bottom: 150px;
+  text-decoration: none;
+}
 
 
 @keyframes App-logo-spin {
