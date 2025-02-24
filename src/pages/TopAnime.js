@@ -1,59 +1,126 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import {Link} from "react-router-dom";
 const TopAnime = () =>{
 
     const [topList, setTopList] = useState([]);
-
+    //Hook for page updates
+    const [page, setPage] = useState(1);
+    const [loading, setLoading] = useState(false);
+    const [hasMore, setHasMore] = useState(true);
     useEffect (() =>{
-        getTop();
-    }, []); 
-    const getTop = async (e) =>{
-        const result = await fetch(`https://api.jikan.moe/v4/top/anime`);
-        const response = await result.json();
-        setTopList(response.data);
-        console.log(response.data);
+        getTop(1);
+    }, []); //Empty, effect runs after intial render
+    useEffect (()=>{
+        window.addEventListener('scroll', handleScroll);
+        return () =>{window.removeEventListener('scroll', handleScroll)};
+        
+    }, []);
+    //called when page changes
+    useEffect(()=>{
+        if(page > 1){
+            getTop(page);
+        }
+    }, [page]);
+    const getTop = async (currentPage) =>{
+        try{
+            setLoading(true);
+            const result = await fetch(`https://api.jikan.moe/v4/top/anime?page=${currentPage}`);
+            const response = await result.json();
+            console.log(response);
+            //no more data, so do not update
+            if (response.data.length === 0) {
+                setHasMore(false);
+                return;
+            }
+            //first page so only render first chunk of data
+            if (page == 1){
+                setTopList(response.data);
+            }
+            else{
+                setTopList(prevList => [...prevList, ...response.data]);
+            }
+            console.log(response.data);
+            
+        }
+        catch(error){
+            console.error("Error fetching anime:", error);
+        }
+        finally{
+            setLoading(false);
+        }
 
     }
-    
+    const handleScroll = () =>{
+        if (loading){
+            return;
+        }
+        const top = document.documentElement.scrollTop;
+        const totalHeight = document.documentElement.scrollHeight;
+        const visibleHeight = document.documentElement.clientHeight;
+        if (top + visibleHeight >= totalHeight - 100){
+         
+            setPage(page => page + 1);
+        }
+    }
+
     return (
+       
         <div className="Top-container">
             <h1 id="top-header">Top 100 Anime</h1>
-            {
-
-                topList.map((anime, index) => (
+            {topList.map((anime, index) => (
+            <div className="list-container" key={anime.mal_id}> 
+                <div className="Ranking">
+                    <p>{"#"}{index + 1}</p>
+                </div>
+                <Link to={'/AnimePage'} state={{ anime }} className="list-link">
                     <div className="List">
-                        <div className="Ranking">
-                            <p>{"#"}{index + 1}</p>
-                        </div>
-                        <Link to={'/AnimePage'} state={{ anime }}>
-                        
-                            
-                            <img width="75" height="110" src={anime.images.jpg.image_url} alt={anime.title} />
-                            
-                            <div className="stats">
-                                <div className="score">
-                                    <p>{anime.score}</p>
-                                </div>
-                                <div className="member-count">
-                                    <p>{anime.members}</p>
-                                </div>
-                                <div className="status">
-                                    <p>{anime.status}</p>
-                                </div>
-                                <p>{anime.title}</p>
-                            
+                        <img width="75" height="110" src={anime.images.jpg.image_url} alt={anime.title} />
+                        <div className="stats">
+                            <div className="score">
+                                <p>{anime.score}</p>
+                            </div>
+                            <div className="member-count">
+                                <p>{anime.members + " members"}</p>
+                            </div>
+                            <div className="status">
+                                <p>{anime.status}</p>
+                            </div>
+                            <div className="type">
                                 <p>{anime.type}</p>
                             </div>
-                        
-                        
-                        </Link>
+                            <div className="season">
+                                <p>{anime.season == null ? "N/A" : anime.season} {anime.year == null ? "N/A" : anime.year}</p>
+                            </div>
+                            <div className="episode-count">
+                                {anime.type == "TV Special" && <p>{anime.episodes + " episode"}</p>}
+                                {anime.type == "Movie" && <p>{anime.duration + "s"}</p>}
+                                {anime.type == "TV" && <p>{anime.episodes + " episodes"}</p>}
+                                {anime.type == "OVA" && <p>{anime.episodes + " episodes"}</p>}
+                            </div>
+
+                            
+                            
+                        </div>
+                        <div className="info">
+                            <div className="title">
+                                <p>{anime.title}</p>
+                            </div>
+                            <div className="categories">
+                            {
+                                    anime.genres.map((genre) =>(
+                                       
+                                        <span className={`category-tag ${genre.name.toLowerCase().includes(' ') ? genre.name.toLowerCase().replace(/\s+/g, '-') : genre.name.toLowerCase()}`}>{genre.name}</span>
+                                        
+                                    ))
+                                }
+                            </div>
+                        </div>
                     </div>
-
-
-                ))
-            }
-        </div>
-        
+                </Link>
+            </div>
+        ))}
+        {loading && <div className="loading">Loading more anime...</div>}
+    </div>
         
     )
 }

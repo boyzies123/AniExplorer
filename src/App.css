@@ -169,38 +169,150 @@
   color:white;
   bottom:90px;
 }
-.Top-container{
+.Top-container {
   background-color: #282c34;
   display: grid;
-
   padding: 80px;
 }
-.Top-container a{
-  color:black;
-  text-decoration: none;
-  font-size:14px;
+
+.list-container {
+  position: relative;
+  margin: 50px;
 }
-.List{
-  height:110px;
+
+.list-link {
+  color: black;
+  text-decoration: none;
+  font-size: 14px;
+  display: block;
+}
+
+.List {
+  height: 110px;
   width: 10000px;
-  background-color:white;
-  padding:10px;
-  margin:50px;
-  position:relative;
+  background-color: white;
+  padding: 10px;
+  position: relative;
   border-radius: 5px;
+  display: flex;
   
 }
-.Ranking{
-  position:absolute;
-  left: -40px;
+
+.Ranking {
+  position: absolute;
+  left: -60px;
+  bottom:40px;
   font-size: 20px;
+  color: white;
+  
+}
+
+.stats {
+  text-decoration: none;
+  font-size:18px;
+}
+
+.score{
+  position: relative;
+  left: 600px;
+  bottom: 10px;
+
+}
+
+.type{
+  position: relative;
+  left: 800px;
+  bottom:135px;
+
+}
+.member-count{
+  position: relative;
+  left: 600px;
+  bottom: 10px;
+  
+}
+.episode-count{
+  position: relative;
+  left: 800px;
+  bottom: 175px;
+}
+
+.status{
+  position: relative;
+  left: 1000px;
+  bottom: 90px;
+}
+
+.season{
+  position: relative;
+  left: 1000px;
+  bottom: 130px;
+}
+.title{
+  position: relative;
+  left: 10px;
+  bottom:20px;
+  font-size: 15px;
+}
+
+.info{
+  position: relative;
+  flex-direction: column;
+  
+
+  bottom: -30px;
+}
+
+.categories{
+  display: flex;
+  gap: 8px;
+
+}
+.category-tag{
+  border-style:solid;
+  border-radius:20px;
+  padding: 4px 12px;
   color:white;
 }
-.stats{
-  position:relative;
-  left: 500px;
-  bottom: 150px;
-  text-decoration: none;
+.category-tag.action{
+  background-color: tomato;
+}
+.category-tag.adventure{
+  background-color: orange;
+}
+.category-tag.comedy{
+  background-color: #8B8000 ;
+}
+.category-tag.romance{
+  background-color: pink;
+}
+.category-tag.fantasy{
+  background-color: purple;
+}
+.category-tag.drama{
+  background-color: lightblue;
+}
+
+.category-tag.sci-fi{
+  background-color: green;
+}
+
+.category-tag.award-winning{
+  background-color: goldenrod;
+}
+.category-tag.supernatural{
+  background-color: gray;
+}
+.category-tag.mystery{
+  background-color: black;
+}
+.category-tag.suspense{
+  background-color: darkred;
+}
+/* Optional hover effect */
+.List:hover {
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 
