@@ -9,20 +9,23 @@ import CreateAccount from "./pages/CreateAccount";
 import AnimeSearch from './pages/AnimeSearch';
 import AnimePage from './pages/AnimePage';
 import TopAnime from './pages/TopAnime';
+import { ThemeProvider } from "./components/ThemeContext";
 function App() {
   return (
-    <Router>
-      <Navbar />
-      <Searchbar />
-      <Routes>
-        <Route path="/home" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/createaccount" element={<CreateAccount />} />
-        <Route path="/AnimeSearch" element={<AnimeSearch />} />
-        <Route path="/AnimePage" element={<AnimePage />} />
-        <Route path="/TopAnime" element={<TopAnime />} />
-      </Routes>
-    </Router>
+    <ThemeProvider>
+        <Router>
+          <Navbar />
+          <Routes>
+            <Route path="/home" element={<Home />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/createaccount" element={<CreateAccount />} />
+            <Route path="/AnimeSearch" element={<AnimeSearch />} />
+            <Route path="/AnimePage" element={<AnimePage />} />
+            <Route path="/TopAnime" element={<TopAnime />} />
+          </Routes>
+      </Router>
+    </ThemeProvider>
+    
     
   );
 }

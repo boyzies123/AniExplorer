@@ -1,5 +1,7 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useState, useRef, useContext } from "react"
 import {Link} from "react-router-dom";
+import Searchbar from '../components/Searchbar';
+import { ThemeContext } from '../components/ThemeContext';
 const TopAnime = () =>{
 
     const [topList, setTopList] = useState([]);
@@ -7,6 +9,8 @@ const TopAnime = () =>{
     const [page, setPage] = useState(1);
     const [loading, setLoading] = useState(false);
     const [hasMore, setHasMore] = useState(true);
+    const [searchQuery, setSearchQuery] = useState("");
+    const { darkMode } = useContext(ThemeContext);
     useEffect (() =>{
         getTop(1);
     }, []); //Empty, effect runs after intial render
@@ -65,46 +69,33 @@ const TopAnime = () =>{
 
     return (
        
-        <div className="Top-container">
-            <h1 id="top-header">Top 100 Anime</h1>
+        <div className={`Top-container ${darkMode ? 'dark-mode' : ''}`}>
+            
+            <h1 className={`top-header ${darkMode ? 'dark-mode' : ''}`}>Top 100 Anime</h1>
+            <Searchbar style={{padding:'14px', left:'50px', position:'relative'}}/>
             {topList.map((anime, index) => (
             <div className="list-container" key={anime.mal_id}> 
-                <div className="Ranking">
+                <div className={`Ranking ${darkMode ? 'dark-mode' : ''}`}>
                     <p>{"#"}{index + 1}</p>
                 </div>
                 <Link to={'/AnimePage'} state={{ anime }} className="list-link">
-                    <div className="List">
+                    <div className={`List ${darkMode ? 'dark-mode' : ''}`}>
                         <img width="75" height="110" src={anime.images.jpg.image_url} alt={anime.title} />
-                        <div className="stats">
+                        <div className={`stats ${darkMode ? 'dark-mode' : ''}`}>
+                            <div className="title">
+                                <p>{anime.title}</p>
+                            </div>
                             <div className="score">
                                 <p>{anime.score}</p>
-                            </div>
-                            <div className="member-count">
-                                <p>{anime.members + " members"}</p>
-                            </div>
-                            <div className="status">
-                                <p>{anime.status}</p>
                             </div>
                             <div className="type">
                                 <p>{anime.type}</p>
                             </div>
+                            
                             <div className="season">
                                 <p>{anime.season == null ? "N/A" : anime.season} {anime.year == null ? "N/A" : anime.year}</p>
                             </div>
-                            <div className="episode-count">
-                                {anime.type == "TV Special" && <p>{anime.episodes + " episode"}</p>}
-                                {anime.type == "Movie" && <p>{anime.duration + "s"}</p>}
-                                {anime.type == "TV" && <p>{anime.episodes + " episodes"}</p>}
-                                {anime.type == "OVA" && <p>{anime.episodes + " episodes"}</p>}
-                            </div>
-
                             
-                            
-                        </div>
-                        <div className="info">
-                            <div className="title">
-                                <p>{anime.title}</p>
-                            </div>
                             <div className="categories">
                             {
                                     anime.genres.map((genre) =>(
@@ -114,6 +105,25 @@ const TopAnime = () =>{
                                     ))
                                 }
                             </div>
+                            <div className="member-count">
+                                <p>{anime.members + " members"}</p>
+                            </div>
+                            
+                            
+                            <div className="episode-count">
+                                {anime.type == "TV Special" && <p>{anime.episodes + " episode"}</p>}
+                                {anime.type == "Movie" && <p>{anime.duration + "s"}</p>}
+                                {anime.type == "TV" && <p>{anime.episodes + " episodes"}</p>}
+                                {anime.type == "OVA" && <p>{anime.episodes + " episodes"}</p>}
+                            </div>
+                            <div className="status">
+                                <p>{anime.status}</p>
+                            </div>
+                            
+                            
+                        </div>
+                        <div className="info">
+                            
                         </div>
                     </div>
                 </Link>

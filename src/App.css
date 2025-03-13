@@ -1,3 +1,6 @@
+p{
+  font-family: 'Roboto', sans-serif;
+}
 .App {
   text-align: center;
 }
@@ -30,9 +33,11 @@
 }
 
 .topnav{
-  background-color: black;
-  font-size: 30px;
-  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  background-color: #000;  
 }
 .topnav a{
   color: white;
@@ -41,36 +46,48 @@
   text-decoration: none;
   font-size: 20px;
 }
-.topnav a:active{
-  background-color: #04AA6D;
-  color: white;
-}
+
 
 .topnav a:hover{
   background-color: #04AA6D;
   color: white;
-  height:40px;
+  height:25px;
 }
 
-.search-bar{
-  position: absolute;      /* Position relative to the nearest positioned ancestor */
-  top: 10px;               /* 10px from the top of the parent container */
-  right: 10px;             /* 10px from the right side of the parent container */
-  
+
+.search-bars{
+  width:max-content;
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 28px;
 }
+
+.search-bars.dark-mode{
+  background: rgb(21, 31, 46);
+}
+.search-bars form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0; /* Remove default margins */
+  padding: 0; /* Remove default padding */
+}
+
 .bar{
-  background-color: lightgray;
-  border-radius: 5px; /* Curve */
-  width: 300px;       /* Width of the search bar */
-  height: 10px; 
-  padding: 5px;
+  outline:none;
+  border: none;
+  background: transparent;
+  margin-left: 14px;
+}
+
+.bar.dark-mode{
+  color:white;
 }
 
 .topnav .right{
-  position: absolute;  /* Position relative to the nearest positioned ancestor (topnav) */
-  top: 0px;           /* 10px from the top of the parent container */
-  right: 350px;         /* 10px from the right side of the parent container */
-
+  display: flex;
+  align-items: center;
 }
 .bg{
   background-color: #282c34;
@@ -164,15 +181,22 @@
 }
 
 
-#top-header{
-  position: relative;
-  color:white;
-  bottom:90px;
+.top-header{
+  color:black;
+  padding-left: 50px;
+}
+.top-header.dark-mode{
+  color:rgb(173, 192, 210);
 }
 .Top-container {
-  background-color: #282c34;
-  display: grid;
-  padding: 80px;
+  background-color: #F4F4F4;
+  padding: 20px;
+  padding-left: 50px;
+}
+
+.Top-container.dark-mode {
+  background-color: rgb(11, 22, 34);
+  
 }
 
 .list-container {
@@ -187,72 +211,50 @@
   display: block;
 }
 
-.List {
-  height: 110px;
-  width: 10000px;
-  background-color: white;
-  padding: 10px;
-  position: relative;
-  border-radius: 5px;
-  display: flex;
-  
-}
+
 
 .Ranking {
   position: absolute;
   left: -60px;
   bottom:40px;
   font-size: 20px;
+  color: black;
+}
+.Ranking.dark-mode{
   color: white;
-  
 }
 
+.List {
+  height: 110px;
+  width: 1200px; 
+  background-color: white;
+  padding: 10px;
+  position: relative;
+  border-radius: 5px;
+  display: flex;
+  align-items: center; 
+  gap: 15px; 
+}
+.List.dark-mode{
+  background-color: rgb(21, 31, 46);
+}
 .stats {
-  text-decoration: none;
-  font-size:18px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); 
+  grid-template-rows: repeat(2, auto); 
+  gap: 10px; 
+  flex-grow: 1; 
+  color:black;
+}
+.stats.dark-mode{
+  color:rgb(201, 215, 227);
 }
 
-.score{
-  position: relative;
-  left: 600px;
-  bottom: 10px;
 
-}
-
-.type{
-  position: relative;
-  left: 800px;
-  bottom:135px;
-
-}
-.member-count{
-  position: relative;
-  left: 600px;
-  bottom: 10px;
-  
-}
-.episode-count{
-  position: relative;
-  left: 800px;
-  bottom: 175px;
-}
-
-.status{
-  position: relative;
-  left: 1000px;
-  bottom: 90px;
-}
-
-.season{
-  position: relative;
-  left: 1000px;
-  bottom: 130px;
-}
 .title{
   position: relative;
   left: 10px;
-  bottom:20px;
-  font-size: 15px;
+
 }
 
 .info{
@@ -266,13 +268,18 @@
 .categories{
   display: flex;
   gap: 8px;
-
+  color:white;
 }
+
+
 .category-tag{
   border-style:solid;
   border-radius:20px;
   padding: 4px 12px;
-  color:white;
+  display: flex;
+  border-width: 0px;
+  align-items: center;
+    
 }
 .category-tag.action{
   background-color: tomato;
@@ -314,8 +321,157 @@
   cursor: pointer;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+.anime-page{
+  overflow-x: hidden;
+
+}
+.anime-image{
+  position:relative;
+  bottom:150px;
+  left:200px;
+  
+}
+
+.anime-image img{
+  border-radius: 8px;
+}
+.anime-info{
+  position:relative;
+  bottom:300px;
+  left:500px;
+  width:50%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.character-grid{
+  display: grid;
+  
+  position:relative;
+  left:500px;
+  width:50%;
+}
+.character-card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.character-container {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.character-info, .voice-actor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; 
+}
+
+.character-info p, .voice-actor p {
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+#staff-header{
+  position: relative;
+  left:500px;
+}
+
+.staff-grid{
+  
+  display: grid;
+  position:relative;
+  grid-template-columns: repeat(4, 1fr);
+  left:500px;
+  width:50%;
+}
+.staff-container{
+  display: flex;
+  justify-content:space-between;
+}
+.staff{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 130px; 
+  
+}
+.staff p{
+  text-align: center;
+}
+.anime-page-info{
+  position:absolute;
+  left:200px;
+  top:600px;
+  font-size:14px;
+}
+
+#toggle{
+  width: 60px;
+  height:30px;
+  box-shadow: inset 0px 5px 15px rgba(0, 0, 0, 0.4), inset 0px -5px 15px rgba(255, 255, 255, 0.4);
+  border-radius: 200px;
+  background: #ebebeb;
+  cursor:pointer;
+  display: block;
+  transition:0.3s;
+}
+
+label:after{
+  content: "";
+  width:30px;
+  height: 30px;
+  position:absolute;
+  top:23px;
+  left:1072px;
+  background:linear-gradient(180deg, #ffcc89, #d8860b);
+  border-radius: 180px;
+  transition:0.3s;
+
+}
+
+#dark-mode{
+  visibility: hidden;
+}
+
+#dark-mode:checked + label{
+  background: #242424;
+}
+#dark-mode:checked + label::after{ 
+  left:1132px;
+  transform: translateX(-100%);
+  background: linear-gradient(180deg, #777, #3a3a3a);
+}
+label svg{
+  width:20px;
+  height:20px;
+  z-index:100;
+  position:absolute;
+  top:28px;
+}
+label svg.light{
+  left:1076px;
+  fill: #fff;
+  transition: 0.3s;
+}
+label svg.dark{
+  left:1105px;
+  fill: #7e7e7e;
+  transition: 0.3s;
+}
+input:checked + label svg.light{
+  fill:#7e7e7e;
+}
+input:checked + label svg.dark{
+  fill:#fff;
+}
 
 
+.material-symbols-outlined.dark-mode{
+  color:rgb(81, 97, 112);
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

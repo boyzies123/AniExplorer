@@ -1,4 +1,6 @@
 import {Link } from "react-router-dom";
+import Searchbar from "../components/Searchbar";
+import ToggleButton from "./ToggleButton";
 const Navbar = () => {
     return (
         <div className="topnav">
@@ -9,11 +11,15 @@ const Navbar = () => {
                 <a href="#Top Characters">Top Characters</a>
                 
             </div>
-
+            
             <div className="right">
+                <div><ToggleButton/></div>
                 <Link to={'/Login'} >Login</Link>
                 <Link to={"/CreateAccount"}>Sign Up</Link>
+                <div><Searchbar/></div>
+                
             </div>
+            
         </div>
     );
     
